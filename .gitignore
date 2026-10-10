@@ -1,0 +1,28 @@
+# ---- 编译产物 ----
+*.exe
+*.obj
+*.o
+*.out
+*.ilk
+*.pdb
+*.idb
+*.exp
+*.lib
+
+# ---- 运行时生成的业务数据 ----
+# 这两个是程序运行后自动产生的，不属于源码，换台机器会重新生成
+packages.dat
+station.log
+
+# ---- 编辑器 / 系统 ----
+.vs/
+*.suo
+*.user
+*.sln.docstates
+.vscode/settings.json
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# 推送辅助脚本（含凭据用法说明，不纳入仓库）
+push_to_github.py
