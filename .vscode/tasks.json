@@ -1,0 +1,80 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "停止运行中的 main.exe",
+            "type": "shell",
+            "command": "${fileDirname}\\.vscode\\kill_main.bat",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [],
+            "presentation": {
+                "reveal": "silent",
+                "panel": "dedicated",
+                "showReuseMessage": false
+            },
+            "detail": "结束仍开着的主程序，否则链接器无法覆盖 main.exe（LNK1168）"
+        },
+        {
+            "type": "cppbuild",
+            "label": "生成项目 (cl.exe)",
+            "command": "cl.exe",
+            "args": [
+                "/Zi",
+                "/EHsc",
+                "/nologo",
+                "/utf-8",
+                "/W3",
+                "/D_CRT_SECURE_NO_WARNINGS",
+                "/Fe${fileDirname}\\main.exe",
+                "${fileDirname}\\*.c"
+            ],
+            "dependsOn": "停止运行中的 main.exe",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "detail": "编译当前目录下全部 .c 文件（各模块独立编译），输出 main.exe"
+        },
+        {
+            "type": "shell",
+            "label": "生成项目 (gcc)",
+            "command": "gcc",
+            "args": [
+                "-std=c99",
+                "-O2",
+                "-Wall",
+                "-Wextra",
+                "-o",
+                "${fileDirname}\\main.exe",
+                "${fileDirname}\\*.c"
+            ],
+            "dependsOn": "停止运行中的 main.exe",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+            "detail": "用 Dev-C++ 自带 MinGW gcc 编译全部 .c 文件"
+        },
+        {
+            "type": "shell",
+            "label": "运行 main.exe",
+            "command": "${fileDirname}\\main.exe",
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [],
+            "dependsOn": "生成项目 (cl.exe)"
+        }
+    ]
+}
