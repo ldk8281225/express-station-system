@@ -1,0 +1,29 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "调试 驿站系统 (MSVC)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\main.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "console": "integratedTerminal",
+            "preLaunchTask": "生成项目 (cl.exe)"
+        },
+        {
+            "name": "运行 驿站系统 (不调试)",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${fileDirname}\\main.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "console": "integratedTerminal",
+            "preLaunchTask": "生成项目 (cl.exe)"
+        }
+    ]
+}
